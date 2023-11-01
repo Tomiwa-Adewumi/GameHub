@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements ActionListener {
     public GamePanel() {
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.WHITE);
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter());
         start = new Button("Start");
@@ -69,17 +69,17 @@ public class GamePanel extends JPanel implements ActionListener {
             g.fillOval(appleX,appleY,UNIT_SIZE, UNIT_SIZE);
 
             for (int i = 0; i < bodyParts; i++) {
-                if (i == 0) { // draw the head of the snake with a random color
-                    g.setColor(new Color(random.nextInt(255)));
+                if (i == 0) { // draw the head of the snake with the color blue
+                    g.setColor(Color.BLUE);
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
-                } else { // draw the body of the snake with random colors
-                    g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+                } else { // draw the body of the snake with the color green
+                    g.setColor(Color.GREEN);
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
             // display score as a measure of apples eaten
-            g.setColor(Color.WHITE);
-            g.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("ARIAL", Font.BOLD, 40));
             FontMetrics fontMetrics = getFontMetrics(g.getFont());
             g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - fontMetrics.stringWidth("Score: " + applesEaten))/2,
                     g.getFont().getSize());
