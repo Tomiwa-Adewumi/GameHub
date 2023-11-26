@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub</title>
+    <style>
+        body {    
+            background-size: cover;
+            background-position: center;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20%;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: white;
+            color: #282c34;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1.2em;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body background="C:\Users\HP USER\Pictures\advrnture time tree.jpg">
+    <h1>Welcome To The Game Hub.</h1>
+    <p>Choose a game to play:</p> 
+
+    <select id="gameSelect">
+        <option value="">Select a Game</option>
+        <option value="file:///C:/Users/HP%20USER/Desktop/GameHub/PONG/index.html">Ping Pong</option>
+        <!-- Add more options for other games -->
+    </select>
+
+    <br>
+
+    <button onclick="startGame()">Start Selected Game</button>
+
+    <script>
+        function startGame() {
+            var selectedGame = document.getElementById("gameSelect").value;
+            
+            if (selectedGame !== "") {
+                window.location.href = encodeURI(selectedGame);
+            } else {
+                alert("Please select a game before starting!");
+            }
+        }
+    </script>
+</body>
+</html>
+ 

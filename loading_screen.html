@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .loading-container {
+            text-align: center;
+        }
+
+        .loading-bar-container {
+            width: 300px;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #3498db;
+            transition: width 0.5s;
+        }
+
+        .loading-text {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .main-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loadingBar"></div>
+        </div>
+        <br>
+        <span class="loading-text" id="loadingText">Loading...</span>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <!-- our main content goes here -->
+        <h1>Welcome to the Main Content!</h1>
+        <!-- Add a link to the next page -->
+        <a href="C:\Users\HP USER\Desktop\GameHub\homeScreen\index.html">Continue to Next Page</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var loadingBar = document.getElementById("loadingBar");
+            var loadingText = document.getElementById("loadingText");
+            var mainContent = document.getElementById("mainContent");
+
+            var count = 0;
+
+            function updateLoadingBar() {
+                count++;
+                loadingBar.style.width = count + "%";
+                loadingText.textContent = "Loading... " + count + "%";
+
+                if (count === 100) {
+                    // Loading complete, switch to main content
+                    loadingText.textContent = "Complete!";
+                    setTimeout(function() {
+                        document.querySelector('.loading-container').style.display = 'none';
+                        mainContent.style.display = 'block';
+                        
+                        // Redirect to the specified page
+                        window.location.href = "C:\\Users\\HP USER\\Desktop\\GameHub\\homeScreen\\index.html";
+                    }, 1000); // Display main content after 1 second (adjust as needed)
+                } else {
+                    // Continue counting
+                    setTimeout(updateLoadingBar, 20); // Adjust the delay for smoother animation
+                }
+            }
+
+            // Start the loading animation
+            updateLoadingBar();
+        });
+    </script>
+</body>
+</html>
